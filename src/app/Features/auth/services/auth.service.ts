@@ -48,7 +48,7 @@ export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
   private jwtService = inject(JwtService);
-  private apiUrl = 'http://localhost:5075/api/Auth';
+  private apiUrl = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api/Auth';
 
   register(data: RegisterRequest): Observable<OtpResponse> {
     console.log(data);

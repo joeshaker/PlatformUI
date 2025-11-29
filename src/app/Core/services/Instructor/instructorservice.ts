@@ -18,7 +18,7 @@ export interface InstructorRegisterRequest {
 })
 export class InstructorService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:5075/api/Instructor';
+  private apiUrl = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api/Instructor';
 
   /**
    * Register a new instructor (new account)

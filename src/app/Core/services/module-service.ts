@@ -48,7 +48,7 @@ export interface UpdateModuleDto {
 })
 export class ModuleService {
 
-  private baseUrl = 'http://localhost:5075'; // change if different
+  private baseUrl = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net'; // change if different
 
   constructor(private http: HttpClient) {}
 

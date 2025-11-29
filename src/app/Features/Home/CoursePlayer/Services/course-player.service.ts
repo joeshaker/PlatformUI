@@ -76,7 +76,7 @@ export class CoursePlayerService {
     const envUrl = environment.apiUrl;
     this.apiUrl = (envUrl && typeof envUrl === 'string' && envUrl.startsWith('http'))
       ? envUrl
-      : 'http://localhost:5075/api';
+      : 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api';
   }
 
   /**

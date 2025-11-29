@@ -4,7 +4,7 @@ import { map, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class EnrollmentService {
-  private baseUrl = 'http://localhost:5075/api/Enrollment';
+  private baseUrl = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api/Enrollment';
 
   constructor(private http: HttpClient) {}
 

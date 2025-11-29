@@ -32,7 +32,7 @@ export class AdminService {
   constructor(@Inject(HttpClient) private http: HttpClient) {
     this.apiUrl = (typeof environment.apiUrl === 'string' && environment.apiUrl.startsWith('http'))
       ? environment.apiUrl
-      : 'http://localhost:5075/api';
+      : 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api';
     console.log('[AdminService] apiUrl =', this.apiUrl);
   }
 

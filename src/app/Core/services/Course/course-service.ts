@@ -11,7 +11,7 @@ export class CourseService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = 'http://localhost:5075/api/Course';
+  baseUrl: string = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api/Course';
 
 
   GetAllCourses():Observable<IAllCourses[]> {

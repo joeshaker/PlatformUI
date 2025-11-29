@@ -78,7 +78,7 @@ export class CourseDetails implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        // API: DELETE http://localhost:5075/api/Course/{courseId}
+        // API: DELETE https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api/Course/{courseId}
         // Prefer a proper method on CourseService, otherwise use HttpClient via the service.
         // @ts-ignore
         const http = (this.service as any).http;

@@ -8,7 +8,7 @@ import { IAllCategories } from '../../interfaces/Category/iall-categories';
 })
 export class CategoryService {
 
-  BaseUrl: string = 'http://localhost:5075/api/Category';
+  BaseUrl: string = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api/Category';
 
   constructor(private http: HttpClient) { }
 

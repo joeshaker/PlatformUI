@@ -73,7 +73,7 @@ export class AllCourses implements OnInit {
     if (!fileName) {
       return 'https://tse2.mm.bing.net/th/id/OIP.Ct30McAoRmpZ0OH8ii6oeAHaHa?pid=Api&P=0&h=220';
     }
-    const baseUrl = 'http://localhost:5075/uploads/Images/';
+    const baseUrl = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/uploads/Images/';
     return `${baseUrl}${fileName}`;
   }
 

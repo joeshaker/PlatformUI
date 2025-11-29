@@ -87,7 +87,7 @@ export class Courses implements OnInit {
       return 'https://tse2.mm.bing.net/th/id/OIP.Ct30McAoRmpZ0OH8ii6oeAHaHa?pid=Api&P=0&h=220';
     }
 
-    const baseUrl = 'http://localhost:5075/uploads/Images/';
+    const baseUrl = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/uploads/Images/';
     return `${baseUrl}${fileName}`;
   }
 
@@ -109,7 +109,7 @@ export class Courses implements OnInit {
   }
 
   private courseServiceDelete(id: number) {
-    // Backend expects DELETE http://localhost:5075/api/Course/{courseId}
+    // Backend expects DELETE https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api/Course/{courseId}
     // Add a delete method if not present by using HttpClient directly in the service if needed.
     (this.courseService as any).http
       ? (this.courseService as any).http.delete(`${this.courseService.baseUrl}/${id}`).subscribe({

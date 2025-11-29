@@ -109,7 +109,7 @@ export class InsdashboardComponent implements OnInit {
   isLoading: boolean = true;
   error: string = '';
 
-  private readonly API_BASE = 'http://localhost:5075/api';
+  private readonly API_BASE = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api';
 
   constructor(private http: HttpClient, private jwt: JwtService, private enrollmentService: EnrollmentService) {}
 
@@ -127,7 +127,7 @@ export class InsdashboardComponent implements OnInit {
     }
 
     // 👇 change this to your backend base URL
-    const baseUrl = 'http://localhost:5075/uploads/Images/';
+    const baseUrl = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/uploads/Images/';
     return `${baseUrl}${fileName}`;
   }
 

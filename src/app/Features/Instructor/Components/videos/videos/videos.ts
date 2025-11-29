@@ -94,7 +94,7 @@ openVideo(videoUrl: string): void {
     return;
   }
 
-  const fullUrl = `http://localhost:5075${videoUrl}`;
+  const fullUrl = `https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net${videoUrl}`;
   console.log('Opening video URL:', fullUrl);
   const iframePage = `
     <html>

@@ -16,7 +16,7 @@ export interface VideoCreateDto {
   providedIn: 'root'
 })
 export class VideoService {
-  private baseUrl = 'http://localhost:5075'; // adjust if different
+  private baseUrl = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net'; // adjust if different
 
   constructor(private http: HttpClient) {}
 

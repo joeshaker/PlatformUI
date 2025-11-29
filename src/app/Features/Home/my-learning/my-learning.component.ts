@@ -50,7 +50,7 @@ export class MyLearningComponent implements OnInit {
     }
 
     // 👇 change this to your backend base URL
-    const baseUrl = 'http://localhost:5075/uploads/Images/';
+    const baseUrl = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/uploads/Images/';
     console.log(fileName)
     return `${baseUrl}${fileName}`;
   }

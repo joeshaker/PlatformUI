@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   user: any = null;
   isLoading = true;
   error: string | null = null;
-  private readonly API_BASE = 'http://localhost:5075/api';
+  private readonly API_BASE = 'https://academyapi-c4d2bjd3cwezbdcn.westeurope-01.azurewebsites.net/api';
 
   constructor(private http: HttpClient) {}
 
