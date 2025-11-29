@@ -1,0 +1,187 @@
+<div class="admin-instructors">
+  <div class="header d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h3 class="mb-0">Instructor Management</h3>
+      <p class="text-muted mb-0">Manage and verify instructors on the platform</p>
+    </div>
+    <div class="d-flex align-items-center">
+      <div class="input-group me-3">
+        <input
+          type="text"
+          class="form-control search-box"
+          placeholder="Search instructors..."
+          (input)="onSearch($event)">
+        <span class="input-group-text bg-transparent border-0">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+      <button class="btn btn-primary" (click)="showAddInstructorModal()">
+        <i class="fas fa-plus me-2"></i>Add Instructor
+      </button>
+    </div>
+  </div>
+
+  <div class="row mb-4" *ngIf="!loading">
+    <div class="col-md-6">
+      <div class="stat-card verified">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div>
+            <h4 class="mb-0">{{ getVerifiedCount() }}</h4>
+            <p class="text-muted mb-0">Verified Instructors</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="stat-card pending">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div>
+            <h4 class="mb-0">{{ getPendingCount() }}</h4>
+            <p class="text-muted mb-0">Pending Verification</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="loading">
+    <div class="col-12 text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-3">Loading instructors...</p>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!loading">
+    <div class="col-12">
+      <div class="table-container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User ID</th>
+              <th>Expertise</th>
+              <th>Bio</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let instructor of getFilteredInstructors()">
+              <td>{{ instructor.id }}</td>
+              <td>{{ instructor.userId }}</td>
+              <td>
+                <span class="expertise-badge">
+                  <i class="fas fa-lightbulb me-1"></i>{{ instructor.expertise }}
+                </span>
+              </td>
+              <td>
+                <span class="bio-text">{{ instructor.bio }}</span>
+              </td>
+              <td>
+                <span
+                  class="badge"
+                  [ngClass]="instructor.isVerified ? 'bg-success' : 'bg-warning'">
+                  <i class="fas" [ngClass]="instructor.isVerified ? 'fa-check-circle' : 'fa-clock'"></i>
+                  {{ instructor.isVerified ? 'Verified' : 'Pending' }}
+                </span>
+              </td>
+              <td>
+                <button
+                  *ngIf="!instructor.isVerified"
+                  class="btn btn-sm btn-success"
+                 (click)="confirmVerify(instructor)"
+                  title="Verify Instructor">
+                  <i class="fas fa-check me-1"></i>Verify
+                </button>
+                <span *ngIf="instructor.isVerified" class="text-success">
+                  <i class="fas fa-check-circle"></i> Verified
+                </span>
+              </td>
+            </tr>
+            <tr *ngIf="getFilteredInstructors().length === 0">
+              <td colspan="6" class="text-center text-muted py-4">
+                <i class="fas fa-chalkboard-teacher fa-3x mb-3 d-block"></i>
+                No instructors found
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Instructor Modal -->
+<div class="modal fade" [class.show]="showAddModal" [style.display]="showAddModal ? 'block' : 'none'" *ngIf="showAddModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Register New Instructor</h5>
+        <button type="button" class="btn-close" (click)="closeModals()"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Name *</label>
+              <input type="text" class="form-control" [(ngModel)]="newInstructor.name" name="name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Email *</label>
+              <input type="email" class="form-control" [(ngModel)]="newInstructor.email" name="email" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Password *</label>
+              <input type="password" class="form-control" [(ngModel)]="newInstructor.password" name="password" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Expertise *</label>
+              <input type="text" class="form-control" [(ngModel)]="newInstructor.expertise" name="expertise" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Bio</label>
+            <textarea class="form-control" rows="3" [(ngModel)]="newInstructor.bio" name="bio"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModals()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="addInstructor()">Register Instructor</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Verify Instructor Modal -->
+<div class="modal fade" [class.show]="showVerifyModal" [style.display]="showVerifyModal ? 'block' : 'none'" *ngIf="showVerifyModal && selectedInstructor">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Verify Instructor</h5>
+        <button type="button" class="btn-close" (click)="closeModals()"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to verify instructor <strong>{{ selectedInstructor.expertise }}</strong>?</p>
+        <p class="text-info"><i class="fas fa-info-circle"></i> This will mark the instructor as verified.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModals()">Cancel</button>
+        <button type="button" class="btn btn-success" (click)="verifyInstructor()">Verify Instructor</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Backdrop -->
+<div class="modal-backdrop fade show" *ngIf="showAddModal || showVerifyModal"></div>
